@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey — From Then to Forever 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f0 100%);
+            color: #5a3a3a;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255, 192, 203, 0.3), rgba(255, 228, 225, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ffc0cb" width="1200" height="800"/><circle cx="300" cy="200" r="150" fill="%23ffb6c1" opacity="0.3"/><circle cx="900" cy="500" r="200" fill="%23ffe4e1" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d4526e;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8a6565;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 50px rgba(255, 117, 140, 0.7);
+            }
+        }
+
+        /* Days Counter */
+        .days-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 0.9rem;
+            color: #d4526e;
+        }
+
+        .days-counter strong {
+            font-size: 1.5rem;
+            display: block;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 100px 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #d4526e;
+            margin-bottom: 80px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ffd700, #ffb6c1);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item.left {
+            justify-content: flex-start;
+        }
+
+        .timeline-item.right {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item.left .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-item.right .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.9);
+        }
+
+        .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ff758c;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #5a3a3a;
+            margin-bottom: 15px;
+        }
+
+        .timeline-text {
+            color: #8a6565;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffeef8 100%);
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #d4526e;
+            margin-bottom: 40px;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            margin: 5px;
+            background: white;
+            border: 2px solid #ff758c;
+            color: #ff758c;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Future Dreams Section */
+        .future-section {
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .future-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d4526e;
+            margin-bottom: 60px;
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .future-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .future-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .future-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .future-card h3 {
+            font-size: 1.3rem;
+            color: #5a3a3a;
+            margin-bottom: 10px;
+        }
+
+        /* Closing Section */
+        .closing-section {
+            padding: 100px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .closing-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .closing-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .closing-btn {
+            padding: 15px 40px;
+            background: white;
+            color: #ff758c;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            font-weight: 600;
+        }
+
+        .closing-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hearts-merge {
+            margin-top: 40px;
+            font-size: 3rem;
+            animation: merge 3s infinite;
+        }
+
+        @keyframes merge {
+            0%, 100% {
+                letter-spacing: 20px;
+            }
+            50% {
+                letter-spacing: 0px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-item.left, .timeline-item.right {
+                justify-content: flex-start;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-icon {
+                left: 30px;
+            }
+
+            .days-counter {
+                top: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <!-- Days Counter -->
+    <div class="days-counter">
+        <strong id="daysCount">0</strong>
+        <div>days together</div>
+    </div>
+
+    <!-- Music Toggle -->
+    <div class="music-toggle" id="musicToggle" title="Toggle Music">
+        🎵
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Journey Together 💕</h1>
+        <p>From our first hello to our forever story…</p>
+        <button class="hero-btn" onclick="document.querySelector('.timeline-section').scrollIntoView({behavior: 'smooth'})">
+            Start the Journey ↓
+        </button>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2>Our Beautiful Timeline ✨</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">12 Feb 2022</div>
+                    <h3 class="timeline-title">The First Message 💌</h3>
+                    <p class="timeline-text">It all started with a simple "Hi" that changed everything. Little did we know, that message was the beginning of our forever.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffe4e1' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>💌</text></svg>" class="timeline-img" alt="First Message">
+                </div>
+                <div class="timeline-icon">💌</div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">28 Mar 2022</div>
+                    <h3 class="timeline-title">Our First Date ☕</h3>
+                    <p class="timeline-text">Nervous smiles, endless conversations, and the moment we realized we never wanted this to end. Time flew by as we discovered each other.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fff5f0' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>☕</text></svg>" class="timeline-img" alt="First Date">
+                </div>
+                <div class="timeline-icon">☕</div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">15 May 2022</div>
+                    <h3 class="timeline-title">Made It Official 💑</h3>
+                    <p class="timeline-text">The day we said "yes" to each other and to a lifetime of love, laughter, and adventures together.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffe4e1' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>💑</text></svg>" class="timeline-img" alt="Official">
+                </div>
+                <div class="timeline-icon">💑</div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">10 Aug 2022</div>
+                    <h3 class="timeline-title">First Trip Together 🌴</h3>
+                    <p class="timeline-text">New places, new memories, and countless moments that made our bond even stronger. Every sunset was more beautiful with you.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fff5f0' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>🌴</text></svg>" class="timeline-img" alt="First Trip">
+                </div>
+                <div class="timeline-icon">🌴</div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">14 Feb 2023</div>
+                    <h3 class="timeline-title">First Valentine's Together 🌹</h3>
+                    <p class="timeline-text">Celebrating love in its purest form. You made every moment magical, and I knew I wanted every Valentine's Day to be with you.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffe4e1' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>🌹</text></svg>" class="timeline-img" alt="Valentine's Day">
+                </div>
+                <div class="timeline-icon">🌹</div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">20 Dec 2024</div>
+                    <h3 class="timeline-title">A Promise Forever 💍</h3>
+                    <p class="timeline-text">The day we decided that this is just the beginning. With you, every day feels like coming home.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fff5f0' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>💍</text></svg>" class="timeline-img" alt="Promise">
+                </div>
+                <div class="timeline-icon">💍</div>
+            </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">20 Dec 2024</div>
+                    <h3 class="timeline-title">A Promise Forever 💍</h3>
+                    <p class="timeline-text">The day we decided that this is just the beginning. With you, every day feels like coming home.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fff5f0' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>💍</text></svg>" class="timeline-img" alt="Promise">
+                </div>
+                <div class="timeline-icon">💍</div>
+            </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">20 Dec 2024</div>
+                    <h3 class="timeline-title">A Promise Forever 💍</h3>
+                    <p class="timeline-text">The day we decided that this is just the beginning. With you, every day feels like coming home.</p>
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fff5f0' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='%23ff758c' font-size='60'>💍</text></svg>" class="timeline-img" alt="Promise">
+                </div>
+                <div class="timeline-icon">💍</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <!-- <section class="gallery-section">
+        <h2>Our Favorite Moments 📸</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="firsts">Firsts</button>
+            <button class="filter-btn" data-filter="special">Special Days</button>
+            <button class="filter-btn" data-filter="trips">Trips</button>
+            <button class="filter-btn" data-filter="funny">Funny Moments</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="firsts">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffb6c1' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>First Kiss</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Our First Kiss 💋</h4>
+                    <p>March 2022</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="trips">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%2387ceeb' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Beach Days</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Beach Memories 🏖️</h4>
+                    <p>August 2022</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="funny">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffd700' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Silly Us</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Being Goofy 😂</h4>
+                    <p>All the time!</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="special">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ff69b4' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Anniversary</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>One Year Together 🎉</h4>
+                    <p>May 2023</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="trips">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ff6347' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Adventure</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Mountain Adventure ⛰️</h4>
+                    <p>November 2023</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="special">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23da70d6' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Birthday</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Your Birthday 🎂</h4>
+                    <p>A special day made perfect</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Future Dreams Section -->
+    <!-- <section class="future-section">
+        <h2>Our Future Together 🌠</h2>
+        <div class="future-grid">
+            <div class="future-card">
+                <div class="icon">✈️</div>
+                <h3>Travel the World</h3>
+                <p>Exploring new places, creating new memories together</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">🏡</div>
+                <h3>Our Dream Home</h3>
+                <p>A cozy place filled with love and laughter</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">👨‍👩‍👧‍👦</div>
+                <h3>Growing Together</h3>
+                <p>Building a beautiful family and life together</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">💫</div>
+                <h3>Forever Adventures</h3>
+                <p>Every day a new chapter in our story</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Closing Section -->
+    <section class="closing-section">
+        <h2>Every moment with you is a chapter of our forever story</h2>
+        <p>"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine." 💫</p>
+        <button class="closing-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            Relive Our Story 💞
+        </button>
+        <div class="hearts-merge">❤️ ❤️</div>
+    </section>
+
+    <script>
+        // Floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Days counter
+        function updateDaysCounter() {
+            const startDate = new Date('2022-02-12');
+            const today = new Date();
+            const diffTime = Math.abs(today - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCount').textContent = diffDays;
+        }
+
+        // Timeline animation on scroll
+        function animateTimeline() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    item.classList.add('show');
+                }
+            });
+        }
+
+        // Gallery filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Music toggle
+        let musicPlaying = false;
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            musicPlaying = !musicPlaying;
+            this.textContent = musicPlaying ? '🔊' : '🎵';
+        });
+
+        // Initialize
+        createHearts();
+        updateDaysCounter();
+        window.addEventListener('scroll', animateTimeline);
+        animateTimeline();
+    </script>
+</body>
+</html>

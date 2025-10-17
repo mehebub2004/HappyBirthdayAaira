@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey — From Then to Forever 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f0 100%);
+            color: #5a3a3a;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(90deg,rgba(255, 150, 196, 1) 0%, rgba(255, 229, 176, 1) 50%, rgba(255, 232, 186, 1) 100%),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ffc0cb" width="1200" height="800"/><circle cx="300" cy="200" r="150" fill="%23ffb6c1" opacity="0.3"/><circle cx="900" cy="500" r="200" fill="%23ffe4e1" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d4526e;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8a6565;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 50px rgba(255, 117, 140, 0.7);
+            }
+        }
+
+        /* Days Counter */
+        .days-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 0.9rem;
+            color: #d4526e;
+        }
+        .days-counter strong {
+            font-size: 1.5rem;
+            display: block;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 100px 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #d4526e;
+            margin-bottom: 80px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ffd700, #ffb6c1);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 350px;
+        }
+
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item.left {
+            flex-direction: row;
+        }
+
+        .timeline-item.right {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 50%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timeline-image-container {
+            width: 50%;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-1{
+            background-image: url(whatsapp.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-2{
+            background-image: url(firstSee.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-3{
+            background-image: url(new_friend.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-4{
+            background-image: url(besidePlayground.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-5{
+            background-image: url(moments.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-6{
+            background-image: url(end_img.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-7{
+            background-image: url(flowers.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-8{
+            background-image: url(cummunication.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-9{
+            background-image: url(waiting.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            /* background: linear-gradient(135deg, #ff758c, #ff7eb3); */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            /* box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4); */
+            z-index: 10;
+        }
+        .Benaami{
+            position: absolute;
+            top: 30px;
+            left: 500px;
+        }
+        .solution{
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        /* .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ff758c;
+            margin-bottom: 10px;
+        } */
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #5a3a3a;
+            margin-bottom: 15px;
+        }
+
+        .timeline-text {
+            color: #8a6565;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+            padding-bottom: 20px;
+        }
+        .wechoose{
+            line-height: 2px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background-image: url(whatsapp.png);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffeef8 100%);
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #d4526e;
+            margin-bottom: 40px;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            margin: 5px;
+            background: white;
+            border: 2px solid #ff758c;
+            color: #ff758c;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Future Dreams Section */
+        .future-section {
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .future-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d4526e;
+            margin-bottom: 60px;
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .future-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .future-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .future-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .future-card h3 {
+            font-size: 1.3rem;
+            color: #5a3a3a;
+            margin-bottom: 10px;
+        }
+
+        /* Closing Section */
+        .closing-section {
+            padding: 100px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .closing-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .closing-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .closing-btn {
+            padding: 15px 40px;
+            background: white;
+            color: #ff758c;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            font-weight: 600;
+        }
+
+        .closing-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hearts-merge {
+            margin-top: 40px;
+            font-size: 3rem;
+            animation: merge 3s infinite;
+        }
+
+        @keyframes merge {
+            0%, 100% {
+                letter-spacing: 20px;
+            }
+            50% {
+                letter-spacing: 0px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-item.left, .timeline-item.right {
+                justify-content: flex-start;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-icon {
+                left: 30px;
+            }
+
+            .days-counter {
+                top: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+        }
+        /* Add content sections for scrolling */
+        .scroll-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .scroll-content{
+                        display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nextPage{
+            height: 40px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+
+        }
+        a{
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Journey Together 💕</h1>
+        <p>From our first hello to our forever story…</p>
+        <button class="hero-btn" onclick="document.querySelector('.timeline-section').scrollIntoView({behavior: 'smooth'})">
+            Start the Journey ↓
+        </button>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2>Our Beautiful Timeline ✨</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-image-container timeline-1">
+                    <!-- <img src="whatsapp.png" class="timeline-img" alt="First Message"> -->
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💌</div>
+                    <h3 class="timeline-title">The First Message</h3>
+                    <p class="timeline-text">Pehli baar wo syllabus ke barei mei puchna itna achha kuch dila dega pata nhi tha. Agar hum thoda sincere student hote ya english department mei hamara koi dost rehta to hume aapse milne ka mouka nhi milta. Achha hua k koi nhi tha. Haa ye bhi hai ki aapne suruwat ke time koi attitude nhi dikhaya, ignore kiya achha se but ghamand nhi. jyadatar thik hi baat kiye ho, late but baat kiye. isiliye ye sab thoda bohut age badha </p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-image-container timeline-2">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">😍</div>
+                    <h3 class="timeline-title">First time I Saw You</h3>
+                    <p class="timeline-text"> waise pehli baar aapki jhalak mila tha exam hall mei but itna kam moment wala ki yaad hi nhi raha aapka chehra. Lekin jab aapko pehli baar dekha office rooms ke bahar, jaha admit cards deta tha, aap white dress pehne hue the, confirm nhi the ki aap hi ho but jab  aapne hi kiya to confirm hue. App bohut time se kisika intejaar krr rahe the. Kuch der baad Jab aapko imraan ke saath dekha to aisa lagaki aap dono relation mei ho.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-image-container timeline-3">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">👥</div>
+                    <h3 class="timeline-title">Became Friends</h3>
+                    <p class="timeline-text"> ekdum suruwat me hamara thik se baat nhi hota tha sirf jarurat mei hi hua hai sayad. hum hi specially baat krne ki kousis krte the bina jarurat ke, to miss barrackpore. aise hi kayi dino tak chalte chalte pata nhi q aap iss looser ko aapna dost bana liye . Sayad mera continous effort ka natiza tha ye dosti. now i realise My efforts were fruitfull. a grate success</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-image-container timeline-4">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🧑🏼‍🤝‍👩🏻</div>
+                    <h3 class="timeline-title">Dost se Jyada</h3>
+                    <p class="timeline-text">Hume banna tha aap bohut achha dost isiliye itna efforts de rahe the taki jo halki halki dosti hai wo aur achha dosti mei convert ho. uska result bhi mila kisi tarah se, Apne apne barei mei bohut baatei share hone lagi. lagvag roz baat hua krta tha kaa ho ya na ho. Aise hi sayad hum aapke banaye hue jaal mei fass gaye. Itna ki  mama ko operation ke liye leke gaye the aur wahi se propose kiya</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-image-container timeline-5">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon Benaami">🧑‍❤️‍👩</div>
+                    <h3 class="timeline-title">Benaami ristha wala phase</h3>
+                    <p class="timeline-text">Pehle to sab normal wala hi relation tha jaha aap bhi waise hi excited dikhte the jaise koi normal boundary less ladki hoti hai. Mujhe lagta hai ki tab aap iss risthe ko leke serious nhi the (just a doubt) Baad mei kuch aisa hua jaha se ye ristha sabse alag bnn gaya. Boundary tha fir bhi bohut kuch memorable bhi hai - ek saath college jana, station se college tak wo rasta, barish mei ek hi umbrella mei aana, station mei aake train ka intezaar krna, aapke banaye hue khana, lass krne jana sirf isliye ki aapse mi sakenge, canteen ke upar wali coridor mei baithna, ground ke pass wali lambi lambi conversations. bhulne jaisa nhi hai</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-image-container timeline-6">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">💔</div>
+                    <h3 class="timeline-title">When it felt like the End</h3>
+                    <p class="timeline-text">Fir college mei wo akhri din aisa kuch ho gaya ki jisse ye ristha almost khatam hone laga tha, mujhe laga tha ki hum galat nhi hai q ki mujhe aapke situation ke barei mei pata nhi tha aur usse pehle din ka bhi kuch issue tha, aapko laga ki mai galat hu. Aisa galat bnn gaya ki khud ko thik hi na krr paye, jaise ki laga tha ye sab khatam ho gaya - depression mei jane lage khudko narcissist samajhne lage.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-image-container timeline-7">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🎉</div>
+                    <h3 class="timeline-title">But saved Anyway</h3>
+                    <p class="timeline-text">Lekin kahi se hume ek chance dikha ise thik krne ki. Khusnasibi se hamara english ka exam last mei rehta hai aur aapse ek mouka mila sab thik krne ki. College mei jaake bhi hume laga tha abhi kuch thik nhi hoga. but jab exam deke wapas chalte aye sayad dunlop tak itne mei sab kuch thik hua. Mera wo phoolo ki mala dena sayad kuch to effect daala tha. Uske baad se hum jab bhi flower shop se guzre hai wo phoolo ko jarur talsh krta hai mera akhein, tabse jaise ki wo flower mera favorite bann gaya </p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-image-container timeline-8">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon solution">💡</div>
+                    <h3 class="timeline-title">We learnt how to be together</h3>
+                    <p class="timeline-text">Ek itna bada jhamela ke baad bhi sabkuch sahi nhi hua. Hamare jhagre, misunderstandings, compatiblity ki kami inn sab ki wajah se ye chalta hi raha. isiliye bohut baar aisa laga ki firse khatam ho jayega. Lekin haar baar aapne hume choose kiya. we choosed to be together. sayad yahi hai compatibily. itne jhagro mei humne dhunda ki ye sab kaise kam kiya jaa sakta, iska solution mila - Communication. Yahi hai Ye Benaami risthe ki sabse badi takat. <br> - <span class="wechoose">We talk, we understand, we resolve</span></p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-image-container timeline-9">
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">⏳</div>
+                    <h3 class="timeline-title">Ek lamba intezaar</h3>
+                    <p class="timeline-text"> At the end ye benami risthe ko behayi naam deke rok diya gaya. Pata nhi kitne dino tak ye aise hi chalta rahega. Don't know if we can make it to the end. Ishallah the wait will end soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <!-- <section class="gallery-section">
+        <h2>Our Favorite Moments 📸</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="firsts">Firsts</button>
+            <button class="filter-btn" data-filter="special">Special Days</button>
+            <button class="filter-btn" data-filter="trips">Trips</button>
+            <button class="filter-btn" data-filter="funny">Funny Moments</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="firsts">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffb6c1' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>First Kiss</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Our First Kiss 💋</h4>
+                    <p>March 2022</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="trips">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%2387ceeb' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Beach Days</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Beach Memories 🏖️</h4>
+                    <p>August 2022</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="funny">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffd700' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Silly Us</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Being Goofy 😂</h4>
+                    <p>All the time!</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="special">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ff69b4' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Anniversary</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>One Year Together 🎉</h4>
+                    <p>May 2023</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="trips">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ff6347' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Adventure</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Mountain Adventure ⛰️</h4>
+                    <p>November 2023</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="special">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23da70d6' width='400' height='300'/><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='40'>Birthday</text></svg>" alt="Memory">
+                <div class="gallery-overlay">
+                    <h4>Your Birthday 🎂</h4>
+                    <p>A special day made perfect</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Future Dreams Section -->
+    <!-- <section class="future-section">
+        <h2>Our Future Together 🌠</h2>
+        <div class="future-grid">
+            <div class="future-card">
+                <div class="icon">✈️</div>
+                <h3>Travel the World</h3>
+                <p>Exploring new places, creating new memories together</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">🏡</div>
+                <h3>Our Dream Home</h3>
+                <p>A cozy place filled with love and laughter</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">👨‍👩‍👧‍👦</div>
+                <h3>Growing Together</h3>
+                <p>Building a beautiful family and life together</p>
+            </div>
+            <div class="future-card">
+                <div class="icon">💫</div>
+                <h3>Forever Adventures</h3>
+                <p>Every day a new chapter in our story</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Closing Section -->
+    <section class="closing-section">
+        <h2>Every moment with you is a chapter of our forever story</h2>
+        <p>"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine." 💫</p>
+        <button class="closing-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            Relive Our Story 💞
+        </button>
+        <div class="hearts-merge">❤️ ❤️</div>
+    </section>
+
+    <script>
+        // Floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Days counter
+        // function updateDaysCounter() {
+        //     const startDate = new Date('2022-02-12');
+        //     const today = new Date();
+        //     const diffTime = Math.abs(today - startDate);
+        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        //     document.getElementById('daysCount').textContent = diffDays;
+        // }
+
+        // Timeline animation on scroll
+        function animateTimeline() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    item.classList.add('show');
+                }
+            });
+        }
+
+        // Gallery filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Music toggle
+        // let musicPlaying = false;
+        // document.getElementById('musicToggle').addEventListener('click', function() {
+        //     musicPlaying = !musicPlaying;
+        //     this.textContent = musicPlaying ? '🔊' : '🎵';
+        // });
+
+        // Initialize
+        createHearts();
+        // updateDaysCounter();
+        window.addEventListener('scroll', animateTimeline);
+        animateTimeline();
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just a few</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&display=swap');
+        
+  body {
+    font-family: 'Fredoka One', cursive;
+    background: linear-gradient(90deg,rgba(255, 150, 196, 1) 0%, rgba(255, 229, 176, 1) 50%, rgba(255, 232, 186, 1) 100%);;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  h1 {
+    text-align: center;
+    padding: 40px 20px;
+    color: #e940ff;
+    letter-spacing: 2px;
+    -webkit-text-stroke-width: 0.5px; /* Width of the outline */
+      -webkit-text-stroke-color: rgba(0, 0, 0, 0.504);
+
+  }
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Quantico", sans-serif;
+
+  gap: 35px;
+  padding-bottom: 200px; /* increased from 60px */
+}
+
+  .compliment {
+    opacity: 0;
+    transform: translateY(30px);
+    background: #fff;
+    border-left: 4px solid #d63384;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 5px 13px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 0px 5px 13px 5px rgba(0,0,0,0);
+    transition: all 0.7s ease;
+  }
+  .compliment.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hearts{
+    text-shadow: 2px 5px 2px rgba(0, 0, 0, 0.855);    
+  }
+
+          /* Add content sections for scrolling */
+        .scroll-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .scroll-content{
+                        display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nextPage{
+            height: 40px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+
+        }
+        a{
+            text-decoration: none;
+        }
+</style>
+</head>
+<body>
+
+<h1><span class="hearts">💖</span> Some Reasons to Choose you always <span class="hearts">💖</span></h1>
+
+<div class="container" id="complimentContainer">
+  <div class="compliment">1. You look amazing. Even when you’re not trying, you somehow look even prettier — I don’t know how you do it.</div>
+  <div class="compliment">2. Your smile is tantalizing; it makes you the most beautiful.</div>
+  <div class="compliment">3. Your hair perfectly complements your look.</div>
+  <div class="compliment">4. You have great taste — in clothes, food, and ideas.</div>
+  <div class="compliment">5. You cook really well. I can imagine how tasty my life would be with you.  </div>
+  <div class="compliment">6. Your religious side attracts me more than anything else about you.</div>
+  <div class="compliment">7. You know your value and never let anyone make you feel less.</div>
+  <div class="compliment">8. You’re very mature. This maturity attracts me towards you most of the time. </div>
+  <div class="compliment">9. You are strong. How you handle your ups and downs is amazing, something to learn from you</div>
+  <div class="compliment">10. You’re very rigid — when you say no, nothing can make it yes… unless it’s a matter of the heart.</div>
+  <div class="compliment">11. Your emotional intelligence is amazing — you understand people and read their intentions so well.</div>
+  <div class="compliment">12. You call yourself an introvert, but I’ve never seen one in you.</div>
+  <div class="compliment">13. You have an ability to make my day without even trying much, </div>
+  <div class="compliment">14. Seeking your advice has never disappointed me.</div>
+  <div class="compliment">15. You communicate clearly — that’s one of your best qualities.</div>
+  <div class="compliment">16. You know your limits — how far to go and where to stop.</div>
+  <div class="compliment">17. Your ability to make any situation interesting is what makes me want to see you again and again.</div>
+  <div class="compliment">18. The hardworking Aaira in you is what makes me fall for you every time.</div>
+  <div class="compliment">19. You have such a kind heart — the way you love your close ones, your parents, your brother, your cat, and me.</div>
+  <div class="compliment">20. You have a natural talent for motivating me without even saying much.</div>
+  <div class="compliment">21. Your voice can comfort me anytime.</div>
+  <div class="compliment">22. You have a big heart — giving me a chance and choosing me again and again.</div>
+</div>
+
+
+
+<div class="scroll-section">
+  <div class="scroll-content">
+    <a href="try_timeline.html" title="next-page">
+      <div class="nextPage">Next Page</div>
+    </a>
+  </div>
+</div>
+
+<script>
+function checkVisibility() {
+  const compliments = document.querySelectorAll('.compliment');
+  compliments.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      c.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility); // <— run once when page loads
+
+</script>
+</body>
+</html>
